@@ -121,7 +121,7 @@ local things =
         japanese = "すし",
         anglicised_japanese = "Sushi",
         weighting = {
-            day = 1, night = nil, food = 7, drink = 0,
+            day = 1, night = 1, food = 7, drink = 0,
         }
     },
     {
