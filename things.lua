@@ -118,18 +118,34 @@ local things =
     --
     {
         english = "Sushi",
-        japanese = nil,
-        anglicised_japanese = nil,
+        japanese = "すし",
+        anglicised_japanese = "Sushi",
         weighting = {
-            day = nil, night = nil, food = 0, drink = 0,
+            day = 1, night = nil, food = 7, drink = 0,
+        }
+    },
+    {
+        english = "Noodles",
+        japanese = "麺",
+        anglicised_japanese = "Men",
+        weighting = {
+            day = 1, night = 0, food = 7, drink = 0,
         }
     },
     {
         english = "Karaage",
-        japanese = nil,
-        anglicised_japanese = nil,
+        japanese = "唐揚げ",
+        anglicised_japanese = "Karaage",
         weighting = {
-            day = nil, night = nil, food = 0, drink = 0,
+            day = 0, night = 0, food = 7, drink = 0,
+        }
+    },
+    {
+        english = "Korean BBQ",
+        japanese = "焼き肉 or 焼肉",
+        anglicised_japanese = "Yakiniku",
+        weighting = {
+            day = 0, night = 5, food = 7, drink = 0,
         }
     },
 
