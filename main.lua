@@ -25,9 +25,9 @@ local function SpinThoseThings()
 end
 
 function RandomThing()
-    local rndThing = things.getRandom()
     local currSceneName = composer.getSceneName("current")
     local currScene = composer.getScene(currSceneName)
+    local rndThing = things.getRandomFromWheel(currScene.sceneParams.wheelKey)
     currScene:displayThing(rndThing)
     -- TODO: Save currently selected thing so that it can be restored when if the app is suspended
 end

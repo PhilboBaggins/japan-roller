@@ -3,6 +3,8 @@ local composer = require("composer")
 function CreateScene(sceneParams)
     local scene = composer.newScene()
 
+    scene.sceneParams = sceneParams
+
     local englishText = nil
     local japaneseText = nil
     local anglicisedJapaneseText = nil
