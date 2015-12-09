@@ -62,6 +62,7 @@ local tabBar = widget.newTabBar {
         { label="Day",   defaultFile="icon1.png", overFile="icon1-down.png", width = 32, height = 32, onPress=GenSceneChange("scene-day"), selected=true },
         { label="Night", defaultFile="icon2.png", overFile="icon2-down.png", width = 32, height = 32, onPress=GenSceneChange("scene-night") },
         { label="Food",  defaultFile="icon1.png", overFile="icon1-down.png", width = 32, height = 32, onPress=GenSceneChange("scene-food") },
+        { label="Drink", defaultFile="icon2.png", overFile="icon2-down.png", width = 32, height = 32, onPress=GenSceneChange("scene-drink") },
     }
 }
 
