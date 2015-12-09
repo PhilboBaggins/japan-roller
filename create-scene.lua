@@ -8,7 +8,7 @@ function CreateScene(sceneParams)
     local anglicisedJapaneseText = nil
 
     -- Called when the scene's view does not exist.
-    function scene:create( event )
+    function scene:create(event)
         local sceneGroup = self.view
 
         local background = display.newRect(0, 0, display.contentWidth, display.contentHeight)
@@ -43,13 +43,13 @@ function CreateScene(sceneParams)
             align = "center",
         })
 
-        sceneGroup:insert( background )
-        sceneGroup:insert( englishText )
-        sceneGroup:insert( japaneseText )
-        sceneGroup:insert( anglicisedJapaneseText )
+        sceneGroup:insert(background)
+        sceneGroup:insert(englishText)
+        sceneGroup:insert(japaneseText)
+        sceneGroup:insert(anglicisedJapaneseText)
     end
 
-    function scene:show( event )
+    function scene:show(event)
         local sceneGroup = self.view
         local phase = event.phase
 
@@ -63,7 +63,7 @@ function CreateScene(sceneParams)
         end
     end
 
-    function scene:hide( event )
+    function scene:hide(event)
         local sceneGroup = self.view
         local phase = event.phase
 
@@ -77,7 +77,7 @@ function CreateScene(sceneParams)
         end
     end
 
-    function scene:destroy( event )
+    function scene:destroy(event)
         local sceneGroup = self.view
 
         -- Called prior to the removal of scene's "view" (sceneGroup)
@@ -86,23 +86,17 @@ function CreateScene(sceneParams)
         -- e.g. remove display objects, remove touch listeners, save state, etc.
     end
 
-    function scene:displayThing( thing )
+    function scene:displayThing(thing)
         englishText.text = thing.english
-
-        if thing.japanese then
-            japaneseText.text = thing.japanese
-        end
-
-        if thing.anglicised_japanese then
-            anglicisedJapaneseText.text = thing.anglicised_japanese
-        end
+        japaneseText.text = thing.japanese
+        anglicisedJapaneseText.text = thing.anglicised_japanese
     end
 
     -- Listener setup
-    scene:addEventListener( "create", scene )
-    scene:addEventListener( "show", scene )
-    scene:addEventListener( "hide", scene )
-    scene:addEventListener( "destroy", scene )
+    scene:addEventListener("create", scene)
+    scene:addEventListener("show", scene)
+    scene:addEventListener("hide", scene)
+    scene:addEventListener("destroy", scene)
 
     return scene
 end
