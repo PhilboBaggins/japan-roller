@@ -7,20 +7,36 @@
 -- show default status bar (iOS)
 display.setStatusBar(display.DefaultStatusBar)
 
--- include Corona's "widget" library
-local widget = require "widget"
-local composer = require "composer"
+local widget = require("widget")
+local composer = require("composer")
 local things = require("things")
+
+local function SpinThoseThings()
+    local spinCount = math.random(10, 15)
+    function DelayedSpin()
+        spinCount = spinCount - 1
+        if spinCount > 0 then
+            RandomThing()
+            local timerInterval = math.random(100, 150)
+            timer.performWithDelay(timerInterval, DelayedSpin, 1)
+        end
+    end
+    DelayedSpin()
+end
+
+function RandomThing()
+    local rndThing = things.getRandom()
+    local currSceneName = composer.getSceneName("current")
+    local currScene = composer.getScene(currSceneName)
+    currScene:displayThing(rndThing)
+    -- TODO: Save currently selected thing so that it can be restored when if the app is suspended
+end
 
 -- Do stuff when the user shakes their mobile device
 local function accelerometerListener(event)
     if event.isShake then
-        local rndThing = things.getRandom()
-        local currSceneName = composer.getSceneName("current")
-        local currScene = composer.getScene(currSceneName)
-        currScene:displayThing(rndThing)
-        -- TODO: Save currently selected thing so that it can be restored when if the app is suspended
-        -- TODO: Have this run on start up ... for all scenes probably
+        --RandomThing()
+        SpinThoseThings()
     end
 
     return true
