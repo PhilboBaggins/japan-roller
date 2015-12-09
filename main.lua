@@ -27,27 +27,26 @@ local function accelerometerListener(event)
 end
 Runtime:addEventListener("accelerometer", accelerometerListener)
 
--- Event listeners for tab buttons:
-local gotoSceneOptions = {
-   effect = "fade",
-   time = 500
-}
-
-local function onDayView(event)
-    composer.gotoScene("scene-day", gotoSceneOptions)
-end
-
-local function onNightView(event)
-    composer.gotoScene("scene-night", gotoSceneOptions)
+-- TODO: Document this function
+local function GenSceneChange(sceneName)
+    local gotoSceneOptions = {
+       effect = "fade",
+       time = 500
+    }
+    return function(event)
+        composer.gotoScene(sceneName, gotoSceneOptions)
+    end
 end
 
 -- TabBar widget
 local tabBar = widget.newTabBar {
-    top = display.contentHeight - 50, -- 50 is default height for tabBar widget
+    height = 50,
+    top = display.contentHeight - 50,
     buttons = {
-        { label="Day", defaultFile="icon1.png", overFile="icon1-down.png", width = 32, height = 32, onPress=onDayView, selected=true },
-        { label="Night", defaultFile="icon2.png", overFile="icon2-down.png", width = 32, height = 32, onPress=onNightView },
+        { label="Day",   defaultFile="icon1.png", overFile="icon1-down.png", width = 32, height = 32, onPress=GenSceneChange("scene-day"), selected=true },
+        { label="Night", defaultFile="icon2.png", overFile="icon2-down.png", width = 32, height = 32, onPress=GenSceneChange("scene-night") },
+        { label="Food",  defaultFile="icon1.png", overFile="icon1-down.png", width = 32, height = 32, onPress=GenSceneChange("scene-food") },
     }
 }
 
-onDayView() -- invoke first tab button's onPress event manually
+GenSceneChange("scene-day")() -- Invoke first tab button's onPress event manually
