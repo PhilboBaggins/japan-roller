@@ -33,6 +33,30 @@ local things =
         }
     },
     {
+        english = "Cat cafe",
+        japanese = nil,
+        anglicised_japanese = nil,
+        weighting = {
+            day = 3, night = 3, food = 0, drink = 0,
+        }
+    },
+    {
+        english = "Host or hostess bar",
+        japanese = nil,
+        anglicised_japanese = nil,
+        weighting = {
+            day = 4, night = 4, food = 0, drink = 0,
+        }
+    },
+    {
+        english = "24 hour hairdresser or similar",
+        japanese = nil,
+        anglicised_japanese = nil,
+        weighting = {
+            day = 1, night = 6, food = 0, drink = 0,
+        }
+    },
+    {
         english = "Arcade games",
         japanese = nil,
         anglicised_japanese = nil,
@@ -88,6 +112,14 @@ local things =
             day = 2, night = 0, food = 0, drink = 0,
         }
     },
+    {
+        english = "Batting cages",
+        japanese = nil,
+        anglicised_japanese = nil,
+        weighting = {
+            day = 4, night = 0, food = 0, drink = 0,
+        }
+    },
 
 
 
@@ -108,6 +140,14 @@ local things =
         anglicised_japanese = "Bīru",
         weighting = {
             day = 2, night = 7, food = 3, drink = 9,
+        }
+    },
+    {
+        english = "Sake",
+        japanese = "酒",
+        anglicised_japanese = "Sake",
+        weighting = {
+            day = 1, night = 7, food = 3, drink = 9,
         }
     },
 
