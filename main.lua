@@ -12,7 +12,7 @@ local composer = require("composer")
 local things = require("things")
 
 local function SpinThoseThings()
-    local spinCount = math.random(10, 15)
+    local spinCount = math.random(15, 20)
     function DelayedSpin()
         spinCount = spinCount - 1
         if spinCount > 0 then
