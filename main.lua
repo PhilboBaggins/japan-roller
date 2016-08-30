@@ -66,4 +66,44 @@ local tabBar = widget.newTabBar {
     }
 }
 
+local sceneNames = {
+    "scene-day",
+    "scene-night",
+    "scene-food",
+    "scene-drink",
+}
+
+local function getCurrentSceneIndex()
+        local currSceneName = composer.getSceneName("current")
+        for k,v in pairs(sceneNames) do
+            if (v == currSceneName) then
+                return k
+            end
+        end
+        return -1 -- Unable to find scene. This should never happen, please update the sceneNames list
+end
+
+local swipeBeginX = 0
+local function touchListener(event)
+    if event.phase == "began" then
+        swipeBeginX = event.x
+    elseif event.phase == "ended" then
+        local curSceneIdx = getCurrentSceneIndex()
+        local nextSceneIdx = (event.x < swipeBeginX) and (curSceneIdx - 1) --[[Left swipe]] or (curSceneIdx + 1) --[[Right swipe]]
+
+        if (nextSceneIdx >= 1) and (nextSceneIdx <= #sceneNames) then
+            local nextSceneName = sceneNames[nextSceneIdx]
+            local gotoSceneOptions = {
+               effect = "fade",
+               time = 100
+            }
+            composer.gotoScene(nextSceneName, gotoSceneOptions)
+            tabBar:setSelected(nextSceneIdx)
+            --print("Swiping to " .. nextSceneName)
+        end
+    end
+    return true
+end
+Runtime:addEventListener("touch", touchListener)
+
 GenSceneChange("scene-day")() -- Invoke first tab button's onPress event manually
