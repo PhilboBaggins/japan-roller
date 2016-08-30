@@ -13,7 +13,7 @@ local things = require("things")
 
 local function SpinThoseThings()
     local spinCount = math.random(15, 20)
-    function DelayedSpin()
+    local function DelayedSpin()
         spinCount = spinCount - 1
         if spinCount > 0 then
             RandomThing()
@@ -24,7 +24,7 @@ local function SpinThoseThings()
     DelayedSpin()
 end
 
-function RandomThing()
+local function RandomThing()
     local currSceneName = composer.getSceneName("current")
     local currScene = composer.getScene(currSceneName)
     local rndThing = things.getRandomFromWheel(currScene.sceneParams.wheelKey)
