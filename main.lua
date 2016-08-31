@@ -4,12 +4,22 @@
 --
 -----------------------------------------------------------------------------------------
 
+-- GLOBALS: math, timer, pairs
+
 -- show default status bar (iOS)
 display.setStatusBar(display.DefaultStatusBar)
 
 local widget = require("widget")
 local composer = require("composer")
 local things = require("things")
+
+local function RandomThing()
+    local currSceneName = composer.getSceneName("current")
+    local currScene = composer.getScene(currSceneName)
+    local rndThing = things.getRandomFromWheel(currScene.sceneParams.wheelKey)
+    currScene:displayThing(rndThing)
+    -- TODO: Save currently selected thing so that it can be restored when if the app is suspended
+end
 
 local function SpinThoseThings()
     local spinCount = math.random(15, 20)
@@ -22,14 +32,6 @@ local function SpinThoseThings()
         end
     end
     DelayedSpin()
-end
-
-local function RandomThing()
-    local currSceneName = composer.getSceneName("current")
-    local currScene = composer.getScene(currSceneName)
-    local rndThing = things.getRandomFromWheel(currScene.sceneParams.wheelKey)
-    currScene:displayThing(rndThing)
-    -- TODO: Save currently selected thing so that it can be restored when if the app is suspended
 end
 
 -- Do stuff when the user shakes their mobile device
