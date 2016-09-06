@@ -3,3 +3,6 @@ Thumbs.db
 
 # Folder I use to store APK builds
 /build/
+
+# MacOS finder metadata
+.DS_Store
