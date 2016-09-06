@@ -91,7 +91,7 @@ local function touchListener(event)
         swipeBeginX = event.x
     elseif event.phase == "ended" then
         local curSceneIdx = getCurrentSceneIndex()
-        local nextSceneIdx = (event.x < swipeBeginX) and (curSceneIdx - 1) --[[Left swipe]] or (curSceneIdx + 1) --[[Right swipe]]
+        local nextSceneIdx = (event.x < swipeBeginX) and (curSceneIdx + 1) --[[Left swipe]] or (curSceneIdx - 1) --[[Right swipe]]
 
         if (nextSceneIdx >= 1) and (nextSceneIdx <= #sceneNames) then
             local nextSceneName = sceneNames[nextSceneIdx]
