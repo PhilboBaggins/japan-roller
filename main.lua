@@ -13,6 +13,11 @@ local widget = require("widget")
 local composer = require("composer")
 local things = require("things")
 
+local CHANGE_SCENE_OPTIONS = {
+    effect = "fade",
+    time = 100
+}
+
 local function RandomThing()
     local currSceneName = composer.getSceneName("current")
     local currScene = composer.getScene(currSceneName)
@@ -47,12 +52,8 @@ Runtime:addEventListener("accelerometer", accelerometerListener)
 
 -- TODO: Document this function
 local function GenSceneChange(sceneName)
-    local gotoSceneOptions = {
-       effect = "fade",
-       time = 500
-    }
     return function(event)
-        composer.gotoScene(sceneName, gotoSceneOptions)
+        composer.gotoScene(sceneName, CHANGE_SCENE_OPTIONS)
     end
 end
 
@@ -95,11 +96,7 @@ local function touchListener(event)
 
         if (nextSceneIdx >= 1) and (nextSceneIdx <= #sceneNames) then
             local nextSceneName = sceneNames[nextSceneIdx]
-            local gotoSceneOptions = {
-               effect = "fade",
-               time = 100
-            }
-            composer.gotoScene(nextSceneName, gotoSceneOptions)
+            composer.gotoScene(nextSceneName, CHANGE_SCENE_OPTIONS)
             tabBar:setSelected(nextSceneIdx)
             --print("Swiping to " .. nextSceneName)
         end
